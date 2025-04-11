@@ -15,19 +15,42 @@
 
       <input type="text" name="name" placeholder="Name" th:value="${customer.name}" required />
 
-      <input type="tel" name="phone" placeholder="Phone: (123) 456 - 7890" th:value="${customer.phone}" required />
+      <input type="tel" name="phone" placeholder="Phone: (123) 456 - 7890" th:value="${customer.phone}"
+             pattern="[0-9]{7}" required />
 
       <button type="submit">Add</button>
 
+    </form>
+
+    <h3>Search by Name:</h3>
+    <form th:action="@{/searchName}" method="get">
+        <input type="text" name="query" placeholder="Search by name" required />
+        <button type="submit">Search</button>  </form>
+
+    <h3>Search by Phone:</h3>
+    <form th:action="@{/searchPhone}" method="get">
+        <input type="tel" name="query" placeholder="Phone Exact" required />
+        <button type="submit">Search</button>
+    </form>
+
+    <h3>Search by Start of Phone:</h3>
+    <form th:action="@{/searchPhone2}" method="get">
+        <input type="tel" name="query" placeholder="Phone Start" required />
+        <button type="submit">Search</button>
+    </form>
+
+    <h3>Delete all Stored Data:</h3>
+    <form th:action="@{/rmAll}" method="post">
+        <button type="submit">Delete</button>
     </form>
 
     <ul>
 
       <li th:each="c : ${customers}">
 
-        <span th:text="${c.name}"></span>
+        <span th:text="${c.getName()}"></span>
 
-        (Phone: <span th:tel="${c.phone}"></span> )
+        (Phone: <span th:text="${c.getPhone()}"></span> )
 
       </li>
 

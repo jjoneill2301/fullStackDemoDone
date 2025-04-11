@@ -10,10 +10,10 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // This allows auto indexing. This will auto update ID each new val
     private Long id; // Primary key, unique
-    private Integer phone; // Integer because max value is in the 2 billions meaning it is perfect for a +1 phone num
+    private String phone; // Integer because max value is in the 2 billions meaning it is perfect for a +1 phone num
     private String name;
 
-    public Customer(String name, Integer phone, Long id) {
+    public Customer(String name, String phone, Long id) {
         this.name = name;
         this.phone = phone;
         this.id = id;
@@ -35,11 +35,11 @@ public class Customer {
         this.name = name;
     }
 
-    public Integer getPhone() {
-        return phone;
+    public String getPhone() {
+        return phone + "";
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
