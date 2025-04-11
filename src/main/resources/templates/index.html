@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <style>
+      body {
+          background-color : gray
+      }
+    </style>
+</head>
+<body>
+    <h1>Customers</h1>
+    <form th:action="@{/create}" method="post">
+
+      <input type="text" name="name" placeholder="Name" th:value="${customer.name}" required />
+
+      <input type="tel" name="phone" placeholder="Phone: (123) 456 - 7890" th:value="${customer.phone}" required />
+
+      <button type="submit">Add</button>
+
+    </form>
+
+    <ul>
+
+      <li th:each="c : ${customers}">
+
+        <span th:text="${c.name}"></span>
+
+        (Phone: <span th:tel="${c.phone}"></span> )
+
+      </li>
+
+    </ul>
+
+
+</body>
+</html>
