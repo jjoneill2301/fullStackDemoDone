@@ -55,7 +55,7 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", phone=" + phone +
+                ", tel=" + phone +
                 ", name='" + name + '\'' +
                 '}';
     }
